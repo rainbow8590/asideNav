@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+#wrap{
+	position:fixed;
+	right: 0;
+	top: 200px;
+	width: 140px;
+
+	height: 324px;
+}
+#wrap a{
+	position: relative;
+	right: 0;
+	text-decoration: none;
+	margin-bottom: 3px;
+	display: block;
+	height: 24px;
+	width: 140px;
+	overflow: hidden;
+	background: #fff;
+	font-size: 13px;
+}
+#wrap a em{
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background: green;
+	color: #fff;
+	text-align: center;
+	line-height: 24px;
+	font-style: normal;
+	margin-right: 10px;
+}
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<a href="javascript:;"><em>♧</em>回到顶部</a>
+		<a href="javascript:;"><em>1</em>楼层一</a>
+		<a href="javascript:;"><em>2</em>楼层二</a>
+		<a href="javascript:;"><em>3</em>楼层三</a>
+		<a href="javascript:;"><em>4</em>楼层四</a>
+		<a href="javascript:;"><em>5</em>楼层五</a>
+		<a href="javascript:;"><em>6</em>楼层六</a>
+		<a href="javascript:;"><em>7</em>楼层七</a>
+		<a href="javascript:;"><em>8</em>楼层八</a>
+		<a href="javascript:;"><em>9</em>楼层九</a>
+		<a href="javascript:;"><em>1</em>楼层十</a>
+		<a href="javascript:;"><em>1</em>楼层十一</a>
+	</div>
+	
+	<script src='jquery-1.11.3/jquery.min.js'></script>
+	<script>
+		$('#wrap').css('right','-116px');
+		var timer = null;
+		$('#wrap').mouseenter(function(){
+			var _this = $(this);
+			timer = setTimeout(function(){
+				_this.find('a').each(function(index){
+					var aThis = $(this);
+					setTimeout(function(){
+						aThis.animate({
+							right: 100
+						},200)
+					},50*index)
+				})
+			},200)
+		})
+		$('#wrap').mouseleave(function(){
+			if(timer){clearTimeout(timer)};
+			console.log(11)
+			$(this).find('a').each(function(index){
+				var aSelf = $(this);
+				setTimeout(function(){
+					aSelf.animate({
+						right: 0
+					},200)
+				},50*index)
+			})
+		});
+
+	</script>
+</body>
+</html>
